@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form th:fragment="quiz-creator"
+          id="quiz-creator"
+          class="quiz-creator"
+          method="POST"
+          th:action="@{/quiz-management/create}">
+        <input type="text" name="theme" placeholder="Enter the quiz theme">
+        <button class="ripple-effect submit-button">Create quiz</button>
+    </form>
+
+    <form th:fragment="quiz-editor"
+          id="quiz-editor"
+          class="quiz-editor"
+          method="POST"
+          th:action="@{/quiz-management/edit}">
+        <input type="hidden" name="id" value="">
+        <input type="text" name="theme" placeholder="Enter the quiz theme">
+        <button class="ripple-effect submit-button">Edit quiz</button>
+    </form>
+</body>
+</html>

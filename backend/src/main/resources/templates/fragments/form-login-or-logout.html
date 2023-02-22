@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="login-or-logout">
+		<div sec:authorize="isAuthenticated()" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 200px;">
+			<div class="nickname" sec:authentication="name"></div>
+			<form method="POST" th:action="@{/logout}">
+				<button class="ripple-effect sign-in-button">Sign out</button>
+			</form>
+		</div>
+		<a sec:authorize="!isAuthenticated()" th:href="@{/login}"><button class="ripple-effect sign-in-button">Sign in</button></a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/login-style.css}">
+    <link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
+    <link rel="stylesheet" th:href="@{/css/universal-style.css}">
+  <title>Sign in quiz</title>
+</head>
+<body>
+
+	<h1 class="title">Sign in quiz</h1>
+    <form method="POST" th:action="@{/login}" id="loginForm">
+		<input type="text" placeholder="Nickname" id="nickname" name="nickname" autocomplete="off">
+		<input type="password" placeholder="Password" id="password" name="password">
+		<p th:if="${error_message != null}" th:text="'ⓘ ' + ${error_message}" class="error"></p>
+		<button class="ripple-effect">Sign in</button>
+	</form>
+
+	<div class="attention">
+		<hr class="left-line">
+		<p>You don't have account? Sign up!</p>
+		<hr class="right-line">
+	</div>
+    <a class="ripple-effect goto-register" th:href="@{/registration}">Sign up</a>
+    <script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+</body>
+</html>

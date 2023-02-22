@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 150px 230px 30px 1fr;
+    grid-template-areas: "title"
+    					"form"
+    					"attention"
+    					"gotoRegister";
+    grid-gap: 20px;
+}
+
+.title {
+	grid-area: title;
+	justify-self: center;
+	align-self: end;
+}
+
+.error {
+	height: 10px;
+	
+	color: rgba(255, 0, 0, 0.9);
+	font-weight: 500;
+	font-size: 10pt;
+	
+	margin: 0 auto;
+	margin-top: -25px;
+	margin-left: calc((350px - 294px)/2);
+}
+
+
+#loginForm {
+	grid-area: form;
+	justify-self: center;
+	position: relative;
+	
+    width: 350px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+	padding: 30px 0px;	
+	background-color: rgba(90, 111, 255, 0.2);
+	border-radius: 10px;
+}
+
+#loginForm input {
+    width: 290px;
+	height: 30px;
+
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+}
+
+#loginForm button {
+	position: relative;
+	width: 100px;
+	height: 30px;
+
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+
+	border: 0px;
+	border-radius: 3px;
+	color: white;
+	background-color: rgba(90, 111, 255, 0.8);
+	cursor: pointer;
+	overflow: hidden;
+}
+
+input {
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: grey;
+	background-color: transparent;
+}
+
+.attention {
+	grid-area: attention;
+	justify-self: center;
+	align-self: center;
+	
+	display: grid;
+	grid-template-columns: 1fr 80% 1fr;
+	width: 350px;
+}
+
+.left-line, .right-line {
+	height: 0px;
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.attention p {
+	padding: 0;
+	margin: 0 auto;
+}
+
+.goto-register {
+	position: relative;
+	
+	grid-area: gotoRegister;
+	justify-self: center;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 340px;
+	height: 30px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	background-color: rgba(90, 111, 255, 0.8);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}

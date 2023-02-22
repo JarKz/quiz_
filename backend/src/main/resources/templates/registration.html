@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/registration-style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
+    <link rel="stylesheet" th:href="@{/css/universal-style.css}">
+    <title>Sign up quiz</title>
+</head>
+<body>
+	<h1 class="title">Sign up quiz</h1>
+	<form method="POST" th:action="@{/registration}" id="registrationForm">
+		<input type="text" placeholder="Nickname" name="nickname" id="nickname" autocomplete="off">
+		<p th:if="${error_username}" th:text="'ⓘ Username already exists! Please try another'" class="error"></p>
+		<input type="text" placeholder="Name" name="name" id="name" autocomplete="off">
+		<input type="password" placeholder="Password" name="password" id="password" autocomplete="off">
+		<button class="ripple-effect">Sign up</button>
+	</form>
+	<div class="attention">
+		<hr class="left-line">
+		<p>You already have account? Sing in!</p>
+		<hr class="right-line">
+	</div>
+    <a class="ripple-effect goto-login" th:href="@{/login}">Sign in</a>
+    <script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+</body>
+</html>

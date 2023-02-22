@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Quiz-management</title>
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/quiz-management-style.css}">
+		<script type="text/javascript" th:src="@{/scripts/quiz_management.js}"></script>
+	</head>
+	<body>
+		<div th:replace="~{fragments/quiz-tools :: quiz-creator}"></div>
+		<div th:replace="~{fragments/quiz-tools :: quiz-editor}"></div>
+		<div class="fullscreen-absolute-position" th:insert="~{fragments/warning :: delete-warning}"></div>
+		<div class="body">
+			<div class="navbar">
+				<h1>Quiz-management</h1>
+				<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+			</div>
+			<main>
+				<div class="create-button-block">
+					<hr class="line-above-create-button">
+					<button class="ripple-effect submit-button" th:attr="onclick=|showQuizCreatorForm()|">Create quiz</button>
+					<hr class="line-below-create-button">
+				</div>
+				<div class="quiz" th:each="quiz : ${user.quizzes}">
+					<div class="quiz-body">
+						<div class="theme">
+							Theme: <h3 th:text="${quiz.theme}"></h3>
+						</div>
+						<div class="buttons"> 
+							<form id="quiz-goto-question-management"
+								  method="POST"
+								  th:action="@{/question-management}">
+								<input type="hidden" name="id" th:value="${quiz.id}">
+								<button class="ripple-effect submit-button">Check questions</button>
+							</form>
+							<button class="ripple-effect edit-button" th:attr="onclick=|showQuizEditorForm('${quiz.id}')|">Edit</button>
+							<form method="POST" th:action="@{/quiz-management/delete}">
+								<input type="hidden" name="id" th:value="${quiz.id}">
+								<button class="ripple-effect delete-button">Delete quiz</button>
+							</form>
+						</div>
+					</div>
+					<hr class="line-separator">
+				</div>
+			</main>
+		</div>
+		<script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/warning-of-delete.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+	</body>
+</html>

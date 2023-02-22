@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:fragment="question-creator"
+          id="question-creator"
+          class="question-creator"
+          method="POST"
+          th:action="@{/question-management/create}">
+        <input type="hidden" name="quiz_id" value="">
+        <input type="text" name="content" placeholder="Enter the question context">
+        <div class="custom-select">
+	        <input type="hidden" id="creator-selected-type" name="type" value="">
+	        <button id="creator-select-type-button" class="ripple-effect submit-button">
+		        <span id="creator-current-type">Select type...</span>
+		        <span id="creator-arrow-select" class="arrow-down"></span>
+	        </button>
+	        <ol id="creator-select-types" class="select-types">
+		        <li class="for-creator-type type">Checkbox</li>
+		        <li class="separator"></li>
+		        <li class="for-creator-type type">Text</li>
+		        <li class="separator"></li>
+		        <li class="for-creator-type type">Radio</li>
+	        </ol>
+        </div>
+        <input type="text" name="right-answer" placeholder="Enter the right answer">
+        <input type="text" class="creator-wrong-answer" name="wrong-answers" placeholder="Enter the wrong answer">
+        <div class="create-erase-wrong-answers-button" id="create-erase-wrong-answers-button-in-creator">
+	        <button class="ripple-effect edit-button" id="creator-new-wrong-answer">Create new wrong answer</button>
+	        <button class="ripple-effect erase-button" id="erase-in-creator-wrong-answer">Erase last wrong answer</button>
+        </div>
+        <button class="ripple-effect submit-button">Create question</button>
+    </form>
+
+    <form th:fragment="question-editor"
+          id="question-editor"
+          class="question-editor"
+          method="POST"
+          th:action="@{/question-management/edit}">
+        <input type="hidden" name="quiz_id" value="">
+        <input type="hidden" name="question_id" value="">
+        <input type="text" name="content" placeholder="Enter the question context">
+        <div class="custom-select">
+	        <input type="hidden" id="editor-selected-type" name="type" value="">
+	        <button id="editor-select-type-button" class="ripple-effect submit-button">
+		        <span id="editor-current-type">Select type...</span>
+		        <span id="editor-arrow-select" class="arrow-down"></span>
+	        </button>
+	        <ol id="editor-select-types" class="select-types">
+		        <li class="for-editor-type type">Checkbox</li>
+		        <li class="separator"></li>
+		        <li class="for-editor-type type">Text</li>
+		        <li class="separator"></li>
+		        <li class="for-editor-type type">Radio</li>
+	        </ol>
+        </div>
+        <input type="text" name="right-answer" placeholder="Enter the right answer">
+        <input type="text" class="editor-wrong-answer" name="wrong-answers" placeholder="Enter the wrong answer">
+        <div class="create-erase-wrong-answers-button" id="create-erase-wrong-answers-button-in-editor">
+	        <button class="ripple-effect edit-button "id="editor-new-wrong-answer">Create new wrong answer</button>
+	        <button class="ripple-effect erase-button" id="erase-in-editor-wrong-answer">Erase last wrong answer</button>
+        </div>
+        <button class="ripple-effect submit-button">Edit question</button>
+    </form>
+</body>
+</html>

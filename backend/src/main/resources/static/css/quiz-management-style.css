@@ -1,0 +1,167 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.body {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 100px 1fr;
+	grid-gap: 20px;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	color: white;
+	background-color: rgba(90, 111, 255, 0.4);
+	padding: 0 50px;
+}
+
+main {
+	margin: 0 50px;
+	
+	display: grid;
+	
+	grid-template-columns: 1fr;
+	grid-template-rows: 70px 1fr;
+	grid-auto-rows: 1fr;
+	grid-gap: 20px;
+}
+
+.create-button-block {
+	height: 70px;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.line-above-create-button, .line-below-create-button {
+	width: 100%;
+	
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+.quiz {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.quiz-body {
+	width: 100%;
+	height: 80px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.quiz-body .buttons {
+	width: 500px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.quiz .line-separator {
+	width: 80%;
+	
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+.quiz-creator, .quiz-editor {
+	display: none;
+	position: absolute;
+	
+	width: 500px;
+	height: 40px;
+	
+	left: calc(50vw - 250px);
+	top: calc(50vh - 20px);
+	
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	
+	padding: 30px;
+	background-color: rgb(206, 212, 252);
+	border-radius: 3px;
+	z-index: 2;
+}
+
+input {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	width: 340px;
+	height: 36px;
+	
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: grey;
+	background-color: transparent;
+}
+
+input:focus{
+	border-color: transparent;
+}
+
+span.show-color-outline {
+	position: absolute;
+	height: 38px;
+	width: 344px;
+	
+	left: 30px;
+
+	outline: 0;	
+	border-style: solid;
+	border-width: 0 0 2px;
+	border-color: rgba(90, 111, 255, 0.8);
+	animation: show-line .4s linear;
+}
+
+@keyframes show-line{
+	0% {
+		width: 0;
+	}
+	100% {
+	    width: 344px;
+	}	
+}
+
+span.erase-color-outline {
+	position: absolute;
+	height: 38px;
+	width: 0;
+	
+	left: 30px;
+
+	outline: 0;	
+	border-style: solid;
+	border-width: 0 0 2px;
+	border-color: rgba(90, 111, 255, 0.8);
+	animation: erase-line .4s linear;
+}
+
+@keyframes erase-line{
+	0% {
+	    width: 344px;
+	}
+	100% {
+		width: 0;
+	}	
+}

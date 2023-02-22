@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div th:fragment="delete-warning" class="warning" id="delete-warning">
+			<h1>You really wanna delete it?</h1>
+			<div class="buttons-in-warning">
+				<button id="accept-button-for-delete" class="ripple-effect accept-button">Yes</button>
+				<button id="decline-button-for-delete" class="ripple-effect decline-button">No</button>
+			</div>
+		</div>
+	</body>
+</html>

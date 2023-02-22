@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Quizzes</title>
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/quiz-style.css}">
+		<script type="text/javascript" th:inline="javascript">
+			const totalPages = [[${totalPages}]];
+		</script>
+	</head>
+	<body>
+		<div class="navbar">
+			<h1>Quiz</h1>
+			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+		</div>
+		<main>
+			<div class="quiz" th:each="quiz : ${quizzes}">
+				<div class="quiz-body">
+					<h2 class="quiz-title" th:text="'Theme: ' + ${quiz.theme}"></h2>
+					<p class="quiz-author" th:text="'Author: ' + ${quiz.user.getNickname()}"></p>
+					<p class="question-count" th:text="'Total questions: ' + ${quiz.questions.size()}"></p>
+					<button class="ripple-effect large-submit-button">Pass the quiz</button>
+				</div>
+				<hr class="line-separator">
+			</div>
+		</main>
+		<form th:action="@{/quiz}" method="GET" id="moving-on-pages">
+			<button id="button-to-previous-page" class="ripple-effect large-submit-button">
+				<span class="left-arrow"></span>
+				<p>Previous page</p>
+			</button>
+			<div class="input-field">
+				<input type="text" name="page" id="current-page" th:value="${currentPage}">
+				<input type="submit" class="hidden">
+			</div>
+			<button id="button-to-next-page" class="ripple-effect large-submit-button">
+				<p>Next page</p>
+				<span class="right-arrow"></span>
+			</button>
+		</form>
+		<h3 th:if="${warning} != null" class="warning-text" th:text="${warning}">
+
+		</h3>
+		<script type="text/javascript" th:src="@{/scripts/quizzes.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+	</body>
+</html>

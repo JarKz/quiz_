@@ -1,0 +1,242 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.nickname {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 18pt;
+}
+
+
+.fullscreen-absolute-position{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sign-in-button {
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 100px;
+	height: 30px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	border-width: 0px;
+	background-color: rgba(90, 111, 255, 0.8);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.submit-button {
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 150px;
+	height: 40px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	border-width: 0px;
+	background-color: rgba(90, 111, 255, 0.8);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.submit-button:disabled, .large-submit-button:disabled{
+	background-color: rgba(90, 111, 255, 1);
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5), -2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit-button, .accept-button {
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 150px;
+	height: 40px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	border-width: 0px;
+	background-color: rgba(41, 234, 25, 0.8);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+	
+}
+
+.delete-button, .decline-button, .erase-button {
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 150px;
+	height: 40px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	border-width: 0px;
+	background-color: rgba(255, 0, 0, 0.9);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.hidden-delete-button {
+	display: none;
+}
+
+.return-button, .large-submit-button {
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	
+	width: 200px;
+	height: 40px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	border-width: 0px;
+	background-color: rgba(90, 111, 255, 0.8);
+	border-radius: 3px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.warning {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	
+	width: 350px;
+	height: 160px;
+	padding: 20px;
+	
+	background-color: rgba(127, 139, 248, 1);
+	
+	border: 3px solid red;
+	border-radius: 3px;
+	
+	animation: warning .4s linear;
+	
+	z-index: 4;
+}
+
+@keyframes warning {
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.warning h1 {
+	text-align: center;
+}
+
+.buttons-in-warning {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	
+	width: 330px;
+	height: 60px;
+}
+
+input:focus{
+	border-color: transparent;
+}
+
+:root {
+	--input-width: 344px;
+	--input-height: 38px;
+}
+
+span.show-color-outline {
+	position: absolute;
+	height: var(--input-height);
+	width: var(--input-width);
+	
+	left: 30px;
+
+	outline: 0;	
+	border-style: solid;
+	border-width: 0 0 2px;
+	border-color: rgba(90, 111, 255, 0.8);
+	animation: show-line .4s linear;
+}
+
+@keyframes show-line{
+	0% {
+		width: 0;
+	}
+	100% {
+		width: var(--input-width);
+	}	
+}
+
+span.erase-color-outline {
+	position: absolute;
+	height: var(--input-height);
+	width: 0;
+	
+	left: 30px;
+
+	outline: 0;	
+	border-style: solid;
+	border-width: 0 0 2px;
+	border-color: rgba(90, 111, 255, 0.8);
+	animation: erase-line .4s linear;
+}
+
+@keyframes erase-line{
+	0% {
+	    width: var(--input-width);
+	}
+	100% {
+		width: 0;
+	}	
+}
