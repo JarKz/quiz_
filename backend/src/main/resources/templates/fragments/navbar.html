@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div class="home-with-quizzes-navbar" th:fragment="home-quizzes">
+			<a th:href="@{/home}">Home</a>
+			<a th:href="@{/quiz}">Quizzes</a>
+			<a th:href="@{/quiz-management}" sec:authorize="hasRole('CREATOR')">Quiz-management</a>
+			<a th:href="@{/quiz-management}" sec:authorize="hasRole('ADMIN')">Quiz-management</a>
+		</div>
+
+		<div class="quizzes-without-home-navbar" th:fragment="quizzes">
+			<a th:href="@{/quiz}">Quizzes</a>
+			<a th:href="@{/quiz-management}" sec:authorize="hasRole('CREATOR')">Quiz-management</a>
+			<a th:href="@{/quiz-management}" sec:authorize="hasRole('ADMIN')">Quiz-management</a>
+		</div>
+	</body>
+</html>

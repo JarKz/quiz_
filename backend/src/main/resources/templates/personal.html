@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>Personal account</title>
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/personal-style.css}">
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="first-part-of-navbar">
+				<h1>Personal account</h1>
+				<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+			</div>
+			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+		</div>
+		<main>
+			<div class="errors" th:if="${error} != null" th:text="${error}"></div>
+			<aside>
+				<ul class="vertical-navbar">
+					<li class="navbar-field user-info active-field">User info</li>
+					<li class="navbar-field password">Password</li>
+					<li class="navbar-field role" sec:authorize="hasRole('CREATOR')">Descrease role</li>
+					<li class="navbar-field role" sec:authorize="hasRole('USER')">Grown up role</li>
+				</ul>
+			</aside>
+			<div class="menu">
+				<form id="user-info" method="POST" th:action="@{/personal/update-name-or-nickname}">
+					<label class="nickname">Nickname: <input id="nickname" type="text" name="nickname" th:value="${user.nickname}" disabled></label>
+					<label class="name">Name: <input id="name" type="text" name="name" placeholder="Name is empty" th:value="${user.name}" disabled></label>
+					<button id="edit-button" class="ripple-effect submit-button">Edit</button>
+					<button id="save-button" class="ripple-effect accept-button disabled-button" disabled>Save</button>
+					<button id="cancel-button" class="ripple-effect decline-button disabled-button" disabled>Cancel</button>
+				</form>
+				<form id="password-change" method="POST" th:action="@{/personal/update-password}">
+					<input type="hidden" name="nickname" th:value="${user.nickname}">
+					<input type="password" name="old-password" placeholder="Enter old password">
+					<input type="password" name="new-password" placeholder="Enter new password">
+					<input type="password" name="new-password-again" placeholder="Enter new password again">
+					<button id="accept-change-password-button" class="ripple-effect large-submit-button">Change password</button>
+				</form>
+				<form id="role-change" method="POST" th:action="@{/personal/update-role}">
+					<input type="hidden" name="nickname" th:value="${user.nickname}">
+					<input type="hidden" name="role" sec:authorize="hasRole('CREATOR')" value="user">
+					<input type="hidden" name="role" sec:authorize="hasRole('USER')" value="creator">
+					<h3>Attention!</h3>
+					<p>For understanding, it is not scary, if you grown up your or decrease your role. When you grown up your role to 'creator' then you can make, edit and delete your quizzes and they questions. If you decrease role - this quizzes and they questions that you maked should not be deleted. If you wanna delete all of they then grown up your and manually delete and only after than decrease role. Thank you for understand!</p>
+					<button id="descrease-role-button" class="ripple-effect decline-button" sec:authorize="hasRole('CREATOR')">Decrease role</button>
+					<button id="grown-up-role-button" class="ripple-effect accept-button" sec:authorize="hasRole('USER')">Grown up role</button>
+				</form>
+			</div>
+		</main>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/personal.js}"></script>
+	</body>
+</html>

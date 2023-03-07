@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Quizzes</title>
 		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
-		<link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
 		<link rel="stylesheet" th:href="@{/css/quiz-style.css}">
 		<script type="text/javascript" th:inline="javascript">
 			const totalPages = [[${totalPages}]];
@@ -12,7 +12,10 @@
 	</head>
 	<body>
 		<div class="navbar">
-			<h1>Quiz</h1>
+			<div class="first-part-of-navbar">
+				<h1>Quiz</h1>
+				<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+			</div>
 			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
 		</div>
 		<main>
@@ -21,7 +24,10 @@
 					<h2 class="quiz-title" th:text="'Theme: ' + ${quiz.theme}"></h2>
 					<p class="quiz-author" th:text="'Author: ' + ${quiz.user.getNickname()}"></p>
 					<p class="question-count" th:text="'Total questions: ' + ${quiz.questions.size()}"></p>
-					<button class="ripple-effect large-submit-button">Pass the quiz</button>
+					<form th:action="@{/quiz/pass-quiz}" method="GET">
+						<input type="hidden" name="quiz_id" th:value="${quiz.id}">
+						<button class="ripple-effect large-submit-button">Pass the quiz</button></a>
+					</form>
 				</div>
 				<hr class="line-separator">
 			</div>
@@ -44,7 +50,7 @@
 
 		</h3>
 		<script type="text/javascript" th:src="@{/scripts/quizzes.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
 	</body>
 </html>

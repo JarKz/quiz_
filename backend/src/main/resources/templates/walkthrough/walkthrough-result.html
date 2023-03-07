@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/css/walkthrough/walkthrough-result-style.css}">
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
+		<title>Walkthrough result</title>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="first-part-of-navbar">
+				<h1>Walkthrough result</h1>
+				<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+			</div>
+			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+		</div>
+		<main>
+			<div class="quiz-theme">
+				<hr class="line-above-heading">
+				<h1 th:text="${theme}"></h1>
+				<hr class="line-below-heading">
+			</div>
+			<div class="result">
+				<h3>Result:</h3>
+				<div class="question-count">
+					<p th:text="${passed_questions}"></p>
+					/
+					<p th:text="${total_questions}"></p>
+				</div>
+			</div>
+			<div class="buttons">
+				<a th:href="@{/quiz}">
+					<button class="ripple-effect large-submit-button">Return to quizzes</button>
+				</a>
+				<a th:href="@{/result}">
+					<button class="ripple-effect large-submit-button">Check result detail</button>
+				</a>
+			</div>
+		</main>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+	</body>
+</html>

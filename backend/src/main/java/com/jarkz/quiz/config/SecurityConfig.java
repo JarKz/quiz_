@@ -22,10 +22,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http
                 .authorizeHttpRequests()
-                    .requestMatchers("/quiz", "/scores")
-                        .hasAnyRole(Role.USER.getRoleName(), Role.CREATOR.getRoleName(), Role.ADMIN.getRoleName())
-                    .requestMatchers("/personal")
-                        .hasAnyRole(Role.CREATOR.getRoleName(), Role.ADMIN.getRoleName())
+                    .requestMatchers(
+                            "/quiz",
+                            "/quiz-walkthrough",
+                            "/walkthrough-result",
+                            "/result",
+                            "/scores",
+                            "/personal"
+                        ).hasAnyRole(Role.USER.getRoleName(), Role.CREATOR.getRoleName(), Role.ADMIN.getRoleName())
+                    .requestMatchers(
+                            "/quiz-management",
+                            "/question-management"
+                        ).hasAnyRole(Role.CREATOR.getRoleName(), Role.ADMIN.getRoleName())
                     .requestMatchers("/admin")
                         .hasRole(Role.ADMIN.getRoleName())
                     .requestMatchers("/", "/**", "/registration")

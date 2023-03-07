@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+    width: 100vw;
+
+    display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 100px 1fr;
+	grid-gap: 20px;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	color: white;
+	background-color: rgba(90, 111, 255, 0.4);
+	padding: 0 50px;
+}
+
+main {
+    justify-self: center;
+    align-self: center;
+
+	width: calc(100vw - 40px);
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 100px 1fr 100px;
+}
+
+.quiz-theme {
+	height: 70px;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.line-above-heading, .line-below-heading {
+	width: 100%;
+	
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+.result-block {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-auto-rows: 1fr;
+	row-gap: 10px;
+}
+
+.result {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+
+    justify-self: center;
+    align-self: center;
+
+	width: 400px;
+	padding: 20px;
+	border-radius: 5px;
+
+	background-color: rgba(90, 112, 255, 0.295);
+}
+
+.result * {
+	margin: 10px 0;
+}
+
+.result h3 {
+    font-weight: 500;
+    font-size: 20pt;
+}
+
+.result .label-answer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.result .label-answer .text-for-input {
+	margin-right: 10px;
+}
+
+.result .label-answer .answer-text {
+	margin-left: 10px;
+}
+
+.result .current-answer {
+	padding-left: 10px;
+}
+
+input[type=text] {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+	
+	width: 200px;
+	height: 36px;
+	
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: grey;
+	background-color: transparent;
+}
+
+input {
+	width: 25px;
+	height: 25px;
+}
+
+.label-for-answer {
+	width: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.answer-text, .text-for-input {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14pt;
+}
+
+.current-answer{
+	height: 40px;
+	border-radius: 5px;
+
+	font-size: 14pt;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.positive {
+	background-color: rgba(80, 232, 80, 0.8);
+}
+
+.negative {
+	background-color: rgba(254, 88, 88, 0.8);
+}
+
+.return-button {
+	justify-self: center;
+	align-self: center;
+}

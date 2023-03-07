@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/css/walkthrough/quiz-walkthrough-style.css}">
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/walkthrough/quiz-walkthrough.js}"></script>
+		<title>Quiz walkthrough</title>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="first-part-of-navbar">
+				<h1>Quiz walkthrough</h1>
+				<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+			</div>
+			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+		</div>
+		<main>
+			<div class="quiz-theme">
+				<hr class="line-above-heading">
+				<h1 th:text="${theme}"></h1>
+				<hr class="line-below-heading">
+			</div>
+			<form id="quiz-walkthrough-form" method="POST" th:action="@{/quiz-walkthrough}">
+				<h2 th:text="${question_content}" class="question-content"></h2>
+				<input type="hidden" name="question_walkthrough_id" th:value="${question_walkthrough_id}">
+				<script type="text/javascript" th:inline="javascript">
+					generateInputs([[${question_type}]], [[${question_answers}]]);
+				</script>
+				<button id="submit-button" class="large-submit-button ripple-effect">Submit answer</button>
+			</form>
+		</main>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+	</body>
+</html>

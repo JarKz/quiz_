@@ -95,6 +95,9 @@ public class TestEntitiesAndRepos {
         List<Question> allQuestions = questionRepo.findAll();
         assertThat(allQuestions).isNotEmpty().isNotNull();
         assertThat(allQuestions.size()).isEqualTo(13);
+        userRepo.deleteAll();
+        quizRepo.deleteAll();
+        questionRepo.deleteAll();
     }
 
     //Don't assert users (or creator, or admin) because even if user have quizzes

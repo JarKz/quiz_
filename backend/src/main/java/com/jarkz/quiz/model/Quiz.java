@@ -22,6 +22,7 @@ public class Quiz {
     private List<Question> questions = new ArrayList<>();
 
     @OneToMany(mappedBy= "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "quiz_walkthroughs")
     private List<QuizWalkthrough> quizWalkthroughs = new ArrayList<>();
 
     @ManyToOne

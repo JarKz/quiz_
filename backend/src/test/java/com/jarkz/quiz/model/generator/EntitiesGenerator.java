@@ -58,32 +58,32 @@ public class EntitiesGenerator {
                         createQuestion(firstQuiz,
                                 QuestionType.CHECKBOX,
                                 "firstQuestion",
-                                "r1",
+                                List.of("r1"),
                                 List.of("wrong1", "wrong2")),
                         createQuestion(firstQuiz,
                                 QuestionType.RADIO,
                                 "secondQuestion",
-                                "r2",
+                                List.of("r2"),
                                 List.of("wrong1", "wrong2", "wrong3")),
                         createQuestion(firstQuiz,
                                 QuestionType.TEXT,
                                 "thirdQuestion",
-                                "r3",
+                                List.of("r3"),
                                 List.of()),
                         createQuestion(firstQuiz,
                                 QuestionType.TEXT,
                                 "Fourth Question",
-                                "r4",
+                                List.of("r4"),
                                 List.of()),
                         createQuestion(firstQuiz,
                                 QuestionType.CHECKBOX,
                                 "Fifth Question",
-                                "r5",
+                                List.of("r5"),
                                 List.of("wrong1", "wrong2", "wrong3")),
                         createQuestion(firstQuiz,
                                 QuestionType.CHECKBOX,
                                 "Sixth Question",
-                                "r6",
+                                List.of("r6"),
                                 List.of("wrong1", "wrong2", "wrong3"))
                 )
         );
@@ -101,17 +101,17 @@ public class EntitiesGenerator {
                         createQuestion(secondQuiz,
                                 QuestionType.RADIO,
                                 "secondQuestion",
-                                "r2",
+                                List.of("r2"),
                                 List.of("wrong1", "wrong2", "wrong3")),
                         createQuestion(secondQuiz,
                                 QuestionType.CHECKBOX,
                                 "Fifth Question",
-                                "r5",
+                                List.of("r5"),
                                 List.of("wrong1", "wrong2", "wrong3")),
                         createQuestion(secondQuiz,
                                 QuestionType.CHECKBOX,
                                 "Sixth Question",
-                                "r6",
+                                List.of("r6"),
                                 List.of("wrong1", "wrong2", "wrong3"))
                 )
         );
@@ -121,22 +121,22 @@ public class EntitiesGenerator {
                         createQuestion(thirdQuiz,
                                 QuestionType.CHECKBOX,
                                 "firstQuestion",
-                                "r1",
+                                List.of("r1"),
                                 List.of("wrong1", "wrong2")),
                         createQuestion(thirdQuiz,
                                 QuestionType.RADIO,
                                 "secondQuestion",
-                                "r2",
+                                List.of("r2"),
                                 List.of("wrong1", "wrong2", "wrong3")),
                         createQuestion(thirdQuiz,
                                 QuestionType.TEXT,
                                 "thirdQuestion",
-                                "r3",
+                                List.of("r3"),
                                 List.of()),
                         createQuestion(thirdQuiz,
                                 QuestionType.CHECKBOX,
                                 "Fifth Question",
-                                "r5",
+                                List.of("r5"),
                                 List.of("wrong1", "wrong2", "wrong3"))
                 )
         );
@@ -164,11 +164,11 @@ public class EntitiesGenerator {
         return quiz;
     }
 
-    private Question createQuestion(Quiz quiz, QuestionType type, String content, String rightAnswer, List<String> wrongAnswers){
+    private Question createQuestion(Quiz quiz, QuestionType type, String content, List<String> rightAnswers, List<String> wrongAnswers){
         Question question = new Question();
         question.setType(type);
         question.setContent(content);
-        question.setRightAnswer(rightAnswer);
+        question.setRightAnswers(rightAnswers);
         question.setWrongAnswers(wrongAnswers);
         question.setQuiz(quiz);
         return question;

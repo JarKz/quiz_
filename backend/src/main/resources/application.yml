@@ -1,9 +1,13 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/quiz
-    username: your username
-    password: your password
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update 
+      ddl-auto: update
+
+test:
+  db_user: ${DB_USER}
+  db_password: ${DB_PASSWORD}

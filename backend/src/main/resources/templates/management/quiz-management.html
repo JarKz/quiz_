@@ -4,9 +4,9 @@
 		<meta charset="UTF-8">
 		<title>Quiz-management</title>
 		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
-		<link rel="stylesheet" th:href="@{/css/ripple-effect.css}">
-		<link rel="stylesheet" th:href="@{/css/quiz-management-style.css}">
-		<script type="text/javascript" th:src="@{/scripts/quiz_management.js}"></script>
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/management/quiz-management-style.css}">
+		<script type="text/javascript" th:src="@{/scripts/management/quiz_management.js}"></script>
 	</head>
 	<body>
 		<div th:replace="~{fragments/quiz-tools :: quiz-creator}"></div>
@@ -14,7 +14,10 @@
 		<div class="fullscreen-absolute-position" th:insert="~{fragments/warning :: delete-warning}"></div>
 		<div class="body">
 			<div class="navbar">
-				<h1>Quiz-management</h1>
+				<div class="first-part-of-navbar">
+					<h1>Quiz-management</h1>
+					<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+				</div>
 				<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
 			</div>
 			<main>
@@ -46,8 +49,8 @@
 				</div>
 			</main>
 		</div>
-		<script type="text/javascript" th:src="@{/scripts/ripple-effect.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/warning-of-delete.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/form-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/warning-of-delete.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
 	</body>
 </html>

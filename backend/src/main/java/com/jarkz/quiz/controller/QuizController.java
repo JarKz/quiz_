@@ -2,16 +2,14 @@ package com.jarkz.quiz.controller;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
 
-import com.jarkz.quiz.model.Quiz;
-import com.jarkz.quiz.repo.QuizRepo;
+import com.jarkz.quiz.model.*;
+import com.jarkz.quiz.repo.*;
 import com.jarkz.quiz.types.TemplateNames;
 
 @Controller
@@ -19,13 +17,19 @@ import com.jarkz.quiz.types.TemplateNames;
 public class QuizController {
 	
 	private final QuizRepo quizRepo;
+	private final QuestionWalkthroughRepo questionWalkthroughRepo;
+	private final QuizWalkthroughRepo quizWalkthroughRepo;
 
 	private final int pageSize = 20;
 	
 	public QuizController(
-		QuizRepo quizRepo
+		QuizRepo quizRepo,
+		QuestionWalkthroughRepo questionWalkthroughRepo,
+		QuizWalkthroughRepo quizWalkthroughRepo
 	) {
 		this.quizRepo = quizRepo;
+		this.questionWalkthroughRepo = questionWalkthroughRepo;
+		this.quizWalkthroughRepo = quizWalkthroughRepo;
 	}
 	
 	@GetMapping
@@ -50,5 +54,33 @@ public class QuizController {
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalPages", quizzesSliceAsPage.getTotalPages());
 		return TemplateNames.QUIZ.getTemplateName();
+	}
+
+	@GetMapping("/pass-quiz")
+	public String passQuiz(
+		@RequestParam(name = "quiz_id") long quizId,
+		Authentication auth,
+		Model model
+	){
+		Quiz quiz = quizRepo.getQuizWithQuestionsById(quizId);
+		String nickname = auth.getName();
+		QuizWalkthrough quizWalkthrough = quizWalkthroughRepo.findQuizWalkthroughByNickname(nickname);
+		boolean toSaveFirst = false;
+		if (quizWalkthrough == null){
+			quizWalkthrough = new QuizWalkthrough();
+			toSaveFirst = true;
+		}
+		quizWalkthrough.setNickname(nickname);
+		quizWalkthrough.setQuiz(quiz);
+		quizWalkthrough.setQuestions(quiz.getQuestions());
+		quizWalkthrough.setUser(quiz.getUser());
+		if (toSaveFirst){
+			quizWalkthroughRepo.save(quizWalkthrough);
+			questionWalkthroughRepo.saveAll(quizWalkthrough.getQuestions());
+		} else {
+			questionWalkthroughRepo.saveAll(quizWalkthrough.getQuestions());
+			quizWalkthroughRepo.save(quizWalkthrough);
+		}
+		return String.format("redirect:/%s", TemplateNames.QUIZ_WALKTHROUGH.getResourseName());
 	}
 }

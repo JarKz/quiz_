@@ -4,6 +4,7 @@ import com.jarkz.quiz.controller.forms.RegistrationForm;
 import com.jarkz.quiz.model.User;
 import com.jarkz.quiz.repo.UserRepo;
 import com.jarkz.quiz.types.TemplateNames;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +32,9 @@ public class Registration {
     	User user = userRepo.findUserByNickname(form.getNickname());
     	if (user == null) {
     		userRepo.save(form.toUser(encoder));
-    		return "redirect:/login";
+    		return String.format("redirect:/%s", TemplateNames.LOGIN.getResourseName());
     	}
     	model.addAttribute("error_username", true);
-    	return "registration";
+    	return TemplateNames.REGISTRATION.getTemplateName();
     }
 }

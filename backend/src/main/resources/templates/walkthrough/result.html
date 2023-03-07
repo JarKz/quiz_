@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/css/walkthrough/result-style.css}">
+		<link rel="stylesheet" th:href="@{/css/effects/ripple-effect.css}">
+		<link rel="stylesheet" th:href="@{/css/universal-style.css}">
+		<script type="text/javascript" th:src="@{/scripts/effects/form-effect.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/walkthrough/result-generator.js}"></script>
+		<title>Detail walkthrough result</title>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="first-part-of-navbar">
+				<h1>Detail walkthrough result</h1>
+				<div th:replace="~{fragments/navbar :: home-quizzes}"></div>
+			</div>
+			<div th:replace="~{fragments/form-login-or-logout :: login-or-logout}"></div>
+		</div>
+		<main>
+			<div class="quiz-theme">
+				<hr class="line-above-heading">
+				<h1 th:text="${theme}"></h1>
+				<hr class="line-below-heading">
+			</div>
+			<div class="result-block">
+				<div class="result" th:each="question_result,iter : ${question_results}">
+					<h3 th:text="${question_result.content}"></h3>
+					<script type="text/javascript" th:inline="javascript">
+						generateResult([[${question_result.answers}]],[[${question_result.rightAnswers}]],[[${question_result.currentAnswer}]],[[${question_result.type}]],[[${question_result.walkthrough}]],[[${iter.index}]]);
+					</script>
+				</div>
+			</div>
+			<a class="return-button" th:href="@{/quiz}">
+				<button class="ripple-effect large-submit-button">Return to quizzes</button>
+			</a>
+		</main>
+		<script type="text/javascript" th:src="@{/scripts/effects/ripple-effect.js}"></script>
+	</body>
+</html>

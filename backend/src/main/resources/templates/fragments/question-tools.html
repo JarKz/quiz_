@@ -26,11 +26,15 @@
 		        <li class="for-creator-type type">Radio</li>
 	        </ol>
         </div>
-        <input type="text" name="right-answer" placeholder="Enter the right answer">
+        <input type="text" class="creator-right-answer" name="right-answers" placeholder="Enter the right answer">
+        <div class="creator-buttons" id="creator-buttons-for-right-answers">
+	        <button class="ripple-effect edit-button" id="creator-create-right-answer">Create new right answer</button>
+	        <button class="ripple-effect erase-button" id="creator-erase-right-answer">Erase last right answer</button>
+        </div>
         <input type="text" class="creator-wrong-answer" name="wrong-answers" placeholder="Enter the wrong answer">
-        <div class="create-erase-wrong-answers-button" id="create-erase-wrong-answers-button-in-creator">
-	        <button class="ripple-effect edit-button" id="creator-new-wrong-answer">Create new wrong answer</button>
-	        <button class="ripple-effect erase-button" id="erase-in-creator-wrong-answer">Erase last wrong answer</button>
+        <div class="creator-buttons" id="creator-buttons-for-wrong-answers">
+	        <button class="ripple-effect edit-button" id="creator-create-wrong-answer">Create new wrong answer</button>
+	        <button class="ripple-effect erase-button" id="creator-erase-wrong-answer">Erase last wrong answer</button>
         </div>
         <button class="ripple-effect submit-button">Create question</button>
     </form>
@@ -57,11 +61,15 @@
 		        <li class="for-editor-type type">Radio</li>
 	        </ol>
         </div>
-        <input type="text" name="right-answer" placeholder="Enter the right answer">
+        <input type="text" class="editor-right-answer" name="right-answers" placeholder="Enter the right answer">
+        <div class="editor-buttons" id="editor-buttons-for-right-answers">
+	        <button class="ripple-effect edit-button "id="editor-create-right-answer">Create new right answer</button>
+	        <button class="ripple-effect erase-button" id="editor-erase-right-answer">Erase last right answer</button>
+        </div>
         <input type="text" class="editor-wrong-answer" name="wrong-answers" placeholder="Enter the wrong answer">
-        <div class="create-erase-wrong-answers-button" id="create-erase-wrong-answers-button-in-editor">
-	        <button class="ripple-effect edit-button "id="editor-new-wrong-answer">Create new wrong answer</button>
-	        <button class="ripple-effect erase-button" id="erase-in-editor-wrong-answer">Erase last wrong answer</button>
+        <div class="editor-buttons" id="editor-buttons-for-wrong-answers">
+	        <button class="ripple-effect edit-button "id="editor-create-wrong-answer">Create new wrong answer</button>
+	        <button class="ripple-effect erase-button" id="editor-erase-wrong-answer">Erase last wrong answer</button>
         </div>
         <button class="ripple-effect submit-button">Edit question</button>
     </form>

@@ -263,7 +263,7 @@ select {
 	border-radius: 10px;
 }
 
-.create-erase-wrong-answers-button {
+.creator-buttons, .editor-buttons {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -274,7 +274,7 @@ select {
 	height: 70px;
 }
 
-.create-erase-wrong-answers-button button {
+.creator-buttons button, .editor-buttons button {
 	width: 180px;
 	height: 50px;
 }
@@ -296,4 +296,9 @@ input {
 #return-to-quizzes-list{
 	width: 200px;
 	height: 40px;
+}
+
+.disabled-button {
+	opacity: 0.7;
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5), -2px 0 10px rgba(0, 0, 0, 0.5);
 }

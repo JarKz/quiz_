@@ -2,12 +2,15 @@ package com.jarkz.quiz.types;
 
 public enum TemplateNames {
     HOME ("home"),
-    LOGIN ("login"),
-    REGISTRATION ("registration"),
-    QUIZ_MANAGEMENT ("quiz-management"),
-    QUESTION_MANAGEMENT ("question-management"),
+    LOGIN ("sign/login"),
+    REGISTRATION ("sign/registration"),
+    QUIZ_MANAGEMENT ("management/quiz-management"),
+    QUESTION_MANAGEMENT ("management/question-management"),
     QUIZ ("quiz"),
-    PERSONAL_ACCOUNT ("personal-account");
+    QUIZ_WALKTHROUGH ("walkthrough/quiz-walkthrough"),
+    WALKTHROUGH_RESULT("walkthrough/walkthrough-result"),
+    RESULT("walkthrough/result"),
+    PERSONAL_ACCOUNT ("personal");
 
     private final String templateName;
 
@@ -17,5 +20,10 @@ public enum TemplateNames {
 
     public String getTemplateName(){
         return templateName;
+    }
+
+    public String getResourseName(){
+        String[] splitedTemplateName = templateName.split("/");
+        return splitedTemplateName.length == 1 ? splitedTemplateName[0] : splitedTemplateName[1];
     }
 }

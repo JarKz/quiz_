@@ -7,6 +7,46 @@
 	font-size: 18pt;
 }
 
+.first-part-of-navbar {
+	display: flex;
+	flex-direction: row;
+}
+
+.home-with-quizzes-navbar, .quizzes-without-home-navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.home-with-quizzes-navbar *, .quizzes-without-home-navbar * {
+	margin: 0 10px;
+
+	font-size: 14pt;
+	font-weight: 400;
+}
+
+.home-with-quizzes-navbar *:first-child, .quizzes-without-home-navbar *:first-child {
+	margin: 0 10px 0 20px;
+}
+
+.home-with-quizzes-navbar *:last-child, .quizzes-without-home-navbar *:last-child {
+	margin: 0 0 0 10px;
+}
+
+#navbar-user {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#navbar-user * {
+	margin: 0 10px;
+}
+#navbar-user *:last-child {
+	margin: 0 0 0 10px;
+}
 
 .fullscreen-absolute-position{
 	width: 100vw;
@@ -239,4 +279,18 @@ span.erase-color-outline {
 	100% {
 		width: 0;
 	}	
+}
+
+a {
+	z-index: 10;
+	color: white;
+	cursor: pointer;
+}
+
+a:hover {
+	color: rgba(90, 112, 255, 0.844);
+}
+
+a:visited{
+	color: transparent;
 }

@@ -70,7 +70,7 @@ main {
 	align-self: center;
 }
 
-.quiz-body button {
+.quiz-body form {
 	grid-area: button;
 	justify-self: end;
 	align-self: center;
