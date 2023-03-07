@@ -74,7 +74,7 @@ If you don't see errors then all is ok. Else check database in you postgres serv
 java -jar backend-1.0-RELEASE.jar
 ```
 
-And enjoy it!
+Run browswer in localhost:8080/login and enjoy it!
 
 ## Afterword
 
