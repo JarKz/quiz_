@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.jarkz'
-version = '1.0-RELASE'
+version = '1.0-RELEASE'
 
 java {
 	toolchain {
